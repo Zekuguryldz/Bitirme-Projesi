@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container products-page-shell urun-durumu-tema-koku tema-sabit-urunler" id="productsTemaKoku">
+    <section class="page-intro mb-4">
+        <span class="eyebrow">Ürün Listesi</span>
+        <h1 class="display-6 fw-bold mt-2">Ürünler</h1>
+    </section>
+
+    <section class="content-panel mb-4 urun-durumu-filtre-panel urun-durumu-vurgu-karti">
+        <div class="row g-3">
+            <div class="col-md-6 products-search-col">
+                <label for="searchInput" class="form-label">Ürün Ara</label>
+                <input type="search" id="searchInput" class="form-control" placeholder="Ürün adına göre ara">
+            </div>
+            <div class="col-md-6 products-market-col">
+                <label for="marketFilter" class="form-label">Market</label>
+                <select id="marketFilter" class="form-select">
+                    <option value="">Tüm Marketler</option>
+                </select>
+            </div>
+            <div id="categoryFilterWrap" class="col-md-6 products-category-col" hidden>
+                <label for="categoryFilter" class="form-label">Kategori</label>
+                <select id="categoryFilter" class="form-select" disabled>
+                    <option value="">Tüm Kategoriler</option>
+                </select>
+            </div>
+            <div class="col-md-6 products-date-col">
+                <label for="dateStartFilter" class="form-label">Başlangıç Tarihi</label>
+                <select id="dateStartFilter" class="form-select" disabled>
+                    <option value="">Tüm Tarihler</option>
+                </select>
+            </div>
+            <div class="col-md-6 products-date-col">
+                <label for="dateEndFilter" class="form-label">Bitiş Tarihi</label>
+                <select id="dateEndFilter" class="form-select" disabled>
+                    <option value="">Tüm Tarihler</option>
+                </select>
+            </div>
+            <div class="col-md-6 products-status-col">
+                <label for="productsUrunDurumuFilter" class="form-label">Ürün Durumu</label>
+                <select id="productsUrunDurumuFilter" class="form-select">
+                    <option value="">Tüm Ürün Durumları</option>
+                    <option value="zamlanmis_urunler">Zamlanmış Ürünler</option>
+                    <option value="indirimdeki_urunler">İndirimli Ürünler</option>
+                    <option value="shrinkflation_riskli_urunler">Shrinkflation Riskli Ürünler</option>
+                </select>
+            </div>
+            <div class="col-md-4 products-action-col">
+                <div class="w-100">
+                    <label class="form-label d-block mb-2 text-transparent">Listele</label>
+                    <button id="filterButton" class="btn btn-dark w-100">Listele</button>
+                </div>
+            </div>
+        </div>
+        <div class="products-durum-legend-wrap">
+            <div class="products-durum-legend" id="productsDurumLegend">
+                <span class="products-durum-item" data-urun-durumu="indirimdeki_urunler">İndirimli Ürünler</span>
+                <span class="products-durum-item" data-urun-durumu="zamlanmis_urunler">Zamlanmış Ürünler</span>
+                <span class="products-durum-item" data-urun-durumu="shrinkflation_riskli_urunler">Shrinkflation Riskli Ürünler</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-panel urun-durumu-vurgu-karti">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+            <div>
+                <h2 class="h4 mb-1">Kayıtlar</h2>
+            </div>
+            <span class="results-chip" id="productCount">Yükleniyor...</span>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table app-table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Ürün Adı</th>
+                        <th>Kategori</th>
+                        <th>Market</th>
+                        <th>Fiyat</th>
+                        <th>Gramaj</th>
+                        <th>Birim Fiyat</th>
+                        <th>Marka</th>
+                        <th>Kayıt Tarihi</th>
+                    </tr>
+                </thead>
+                <tbody id="productsTableBody">
+                    <tr>
+                        <td colspan="8" class="text-center text-secondary py-4">Veri yükleniyor...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="products-pagination" id="productsPagination">
+            <span class="pagination-summary" id="paginationSummary">Kayıtlar hazırlanıyor...</span>
+            <div class="pagination-actions">
+                <button type="button" class="btn btn-outline-dark btn-sm pagination-icon-button" id="firstPageButton" aria-label="İlk sayfa">&laquo;</button>
+                <button type="button" class="btn btn-outline-dark btn-sm" id="prevPageButton">Geri</button>
+                <label class="pagination-input-wrap" for="pageNumberInput">
+                    <span>Sayfa</span>
+                    <input type="number" min="1" step="1" id="pageNumberInput" value="1">
+                </label>
+                <span class="results-chip" id="pageIndicator">/ 1</span>
+                <button type="button" class="btn btn-dark btn-sm" id="nextPageButton">İleri</button>
+                <button type="button" class="btn btn-outline-dark btn-sm pagination-icon-button" id="lastPageButton" aria-label="Son sayfa">&raquo;</button>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/products.js') }}?v=20"></script>
+{% endblock %}

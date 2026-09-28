@@ -1,0 +1,9 @@
+BEGIN;
+
+ALTER TABLE anomali
+ADD COLUMN IF NOT EXISTS z_score NUMERIC;
+
+ALTER TABLE anomali
+ADD COLUMN IF NOT EXISTS history_sample_count INTEGER;
+
+COMMIT;

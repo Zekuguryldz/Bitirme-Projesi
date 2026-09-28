@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <section class="page-intro mb-4">
+        <span class="eyebrow">Karşılaştırmalı Listeleme</span>
+        <h1 class="display-6 fw-bold mt-2">Shrinkflation Riskli Ürünler</h1>
+    </section>
+
+    <section class="content-panel">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+            <div>
+                <h2 class="h4 mb-1">İncelemeye Sunulan Kayıtlar</h2>
+            </div>
+            <span class="results-chip" id="riskyProductsCount">0 tespit</span>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table app-table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Ürün Adı</th>
+                        <th>Eski Fiyat</th>
+                        <th>Yeni Fiyat</th>
+                        <th>Eski Miktar</th>
+                        <th>Yeni Miktar</th>
+                        <th>Eski Birim Fiyat</th>
+                        <th>Güncel Birim Fiyat</th>
+                        <th>Oran</th>
+                        <th>Eski Tarih</th>
+                        <th>Yeni Tarih</th>
+                    </tr>
+                </thead>
+                <tbody id="riskyProductsTableBody">
+                    <tr>
+                        <td colspan="10" class="text-center text-secondary py-4">
+                            Gösterilecek kayıt bulunamadı.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/risky_products.js') }}?v=13"></script>
+{% endblock %}

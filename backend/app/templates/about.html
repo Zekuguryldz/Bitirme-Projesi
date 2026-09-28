@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <section class="page-intro mb-4">
+        <span class="eyebrow">Proje Çerçevesi</span>
+        <h1 class="display-6 fw-bold mt-2">Hakkında</h1>
+        <p class="text-secondary mb-0">
+            Projenin kapsamı, teknik yapı ve mevcut sınırlılıkları bu sayfada özetlenmektedir.
+        </p>
+    </section>
+
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <section class="content-panel h-100">
+                <h2 class="h4 mb-3">Proje Amacı</h2>
+                <p class="mb-0">
+                    Bu proje market ürünlerinin fiyat ve gramaj değişimlerini izlemek amacıyla geliştirilmiştir.
+                    Sistem, backend üzerinden sağlanan verileri web arayüzünde karşılaştırmalı olarak gösterir.
+                </p>
+            </section>
+        </div>
+        <div class="col-lg-6">
+            <section class="content-panel h-100">
+                <h2 class="h4 mb-3">Kullanılan Teknolojiler</h2>
+                <ul class="list-unstyled mb-0 text-secondary">
+                    <li>FastAPI</li>
+                    <li>Jinja2 Template yapısı</li>
+                    <li>Bootstrap 5</li>
+                    <li>Supabase PostgreSQL</li>
+                </ul>
+            </section>
+        </div>
+        <div class="col-lg-6">
+            <section class="content-panel h-100">
+                <h2 class="h4 mb-3">Mevcut Sürüm</h2>
+                <p class="mb-0">
+                    Mevcut sürümde ürünlerin fiyat, toplam içerik, birim içerik ve paket adedi değişimleri birlikte karşılaştırılmaktadır.
+                    Arayüz, içerik azalışı ve buna eşlik eden birim fiyat bozulmalarını shrinkflation riski olarak göstermektedir.
+                </p>
+            </section>
+        </div>
+        <div class="col-lg-6">
+            <section class="content-panel h-100">
+                <h2 class="h4 mb-3">Sınırlılıklar ve Sonraki Aşama</h2>
+                <p class="mb-0">
+                    Tarihsel ürün adı veya adet bilgisi veritabanında ayrı snapshot alanı olarak tutulmadığı için eski dönem paket bilgisi gerektiğinde yedek CSV ile desteklenmektedir.
+                    Sonraki aşamada bu bilgilerin doğrudan zaman serisi kaydına yazılması ve çok marketli karşılaştırma akışının eklenmesi planlanmaktadır.
+                </p>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

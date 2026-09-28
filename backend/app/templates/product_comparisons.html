@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container urun-durumu-tema-koku tema-zamlanmis-urunler" id="comparisonTemaKoku">
+    <section class="page-intro mb-4">
+        <span class="eyebrow">Karşılaştırmalı Listeleme</span>
+        <h1 class="display-6 fw-bold mt-2">Ürün Karşılaştırmaları</h1>
+        <p class="text-secondary mb-0">Aynı ürünün son iki kayıt tarihindeki birim fiyat ve içerik bilgileri.</p>
+    </section>
+
+    <section class="content-panel mb-4 urun-durumu-filtre-panel urun-durumu-vurgu-karti">
+        <div class="row g-3 align-items-end">
+            <div class="col-md-6 col-lg-2">
+                <label for="comparisonMarketFilter" class="form-label">Market</label>
+                <select id="comparisonMarketFilter" class="form-select">
+                    <option value="">Tüm Marketler</option>
+                    <option value="sok">ŞOK</option>
+                    <option value="migros">MİGROS</option>
+                </select>
+            </div>
+            <div id="comparisonCategoryFilterWrap" class="col-md-6 col-lg-2" hidden>
+                <label for="comparisonCategoryFilter" class="form-label">Kategori</label>
+                <select id="comparisonCategoryFilter" class="form-select" disabled>
+                    <option value="">Tüm Kategoriler</option>
+                </select>
+            </div>
+            <div class="col-md-6 col-lg-2">
+                <label for="comparisonDateStart" class="form-label">Başlangıç Tarihi</label>
+                <select id="comparisonDateStart" class="form-select" disabled>
+                    <option value="">Tüm Tarihler</option>
+                </select>
+            </div>
+            <div class="col-md-6 col-lg-2">
+                <label for="comparisonDateEnd" class="form-label">Bitiş Tarihi</label>
+                <select id="comparisonDateEnd" class="form-select" disabled>
+                    <option value="">Tüm Tarihler</option>
+                </select>
+            </div>
+            <div class="col-md-6 col-lg-2">
+                <label class="form-label d-block mb-2 text-transparent">Listele</label>
+                <button id="comparisonFilterButton" class="btn btn-dark w-100">Listele</button>
+            </div>
+            <div class="col-md-6 col-lg-2">
+                <label for="comparisonUrunDurumuFilter" class="form-label">Ürün Durumu</label>
+                <select id="comparisonUrunDurumuFilter" class="form-select">
+                    <option value="zamlanmis_urunler">Zamlanmış Ürünler</option>
+                    <option value="indirimdeki_urunler">İndirimdeki Ürünler</option>
+                    <option value="shrinkflation_riskli_urunler">Shrinkflation Riskli Ürünler</option>
+                </select>
+            </div>
+        </div>
+        <div class="urun-durumu-gostergesi-satiri">
+            <div class="urun-durumu-gostergesi" id="comparisonUrunDurumuGostergesi" aria-live="polite">
+                <span class="urun-durumu-noktalari" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span id="comparisonUrunDurumuGostergesiYazi">Zamlanmış Ürünler</span>
+            </div>
+        </div>
+        <p class="text-secondary small mb-0 mt-3">Kategori ve tarih filtreleri market seçildikten sonra aktif olur ve seçilen marketin kayıtlarına göre sınırlandırılır.</p>
+    </section>
+
+    <section class="content-panel urun-durumu-vurgu-karti">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+            <div>
+                <h2 class="h4 mb-1" id="productComparisonsTitle">Zamlanmış Ürün Karşılaştırmaları</h2>
+            </div>
+            <span class="results-chip" id="productComparisonsCount">Yükleniyor...</span>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table app-table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Ürün Adı</th>
+                        <th>Market</th>
+                        <th>Kategori</th>
+                        <th>Eski Fiyat</th>
+                        <th>Yeni Fiyat</th>
+                        <th>Eski Gramaj</th>
+                        <th>Yeni Gramaj</th>
+                        <th>Eski Birim Fiyat</th>
+                        <th>Yeni Birim Fiyat</th>
+                        <th>Özet</th>
+                    </tr>
+                </thead>
+                <tbody id="productComparisonsTableBody">
+                    <tr>
+                        <td colspan="10" class="text-center text-secondary py-4">Karşılaştırmalar yükleniyor...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="products-pagination" id="productComparisonsPagination">
+            <span class="pagination-summary" id="productComparisonsSummary">Karşılaştırmalar hazırlanıyor...</span>
+            <div class="pagination-actions">
+                <button type="button" class="btn btn-outline-dark btn-sm pagination-icon-button" id="productComparisonsFirstPageButton" aria-label="İlk sayfa">&laquo;</button>
+                <button type="button" class="btn btn-outline-dark btn-sm" id="productComparisonsPrevPageButton">Geri</button>
+                <label class="pagination-input-wrap" for="productComparisonsPageNumberInput">
+                    <span>Sayfa</span>
+                    <input type="number" min="1" step="1" id="productComparisonsPageNumberInput" value="1">
+                </label>
+                <span class="results-chip" id="productComparisonsPageIndicator">/ 1</span>
+                <button type="button" class="btn btn-dark btn-sm" id="productComparisonsNextPageButton">İleri</button>
+                <button type="button" class="btn btn-outline-dark btn-sm pagination-icon-button" id="productComparisonsLastPageButton" aria-label="Son sayfa">&raquo;</button>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/product_comparisons.js') }}?v=10"></script>
+{% endblock %}

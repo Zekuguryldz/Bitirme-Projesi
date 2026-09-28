@@ -1,0 +1,2 @@
+CRON_TZ=Europe/Istanbul
+0 19 * * 1 cd /Users/uguryildiz/Desktop/bitirme/bitirme- && /opt/anaconda3/bin/python /Users/uguryildiz/Desktop/bitirme/bitirme-/migros_weekly_supabase_sync.py >> /Users/uguryildiz/Desktop/bitirme/bitirme-/scheduled_outputs/migros_weekly_supabase_sync.log 2>&1

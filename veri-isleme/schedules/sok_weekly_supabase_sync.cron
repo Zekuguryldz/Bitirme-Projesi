@@ -1,0 +1,2 @@
+CRON_TZ=Europe/Istanbul
+0 19 * * 6 cd /Users/uguryildiz/Desktop/bitirme/bitirme- && /Users/uguryildiz/Desktop/bitirme/bitirme-/.venv/bin/python /Users/uguryildiz/Desktop/bitirme/bitirme-/sok_weekly_supabase_sync.py >> /Users/uguryildiz/Desktop/bitirme/bitirme-/scheduled_outputs/sok_weekly_supabase_sync.log 2>&1
